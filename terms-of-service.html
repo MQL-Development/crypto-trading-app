@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Crypto Trading App</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f6f7f8 0%, #e8e8e8 50%, #d3d3d3 100%);
+            min-height: 100vh;
+        }
+
+        .overlay {
+            background: rgba(255, 255, 255, 0);
+            backdrop-filter: blur(10px);
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            margin-bottom: 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo {
+            height: 40px;
+            width: 40px;
+            border-radius: 8px;
+        }
+
+        .app-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2b8cee;
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #2b8cee;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2b8cee;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e8e8e8;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .summary {
+            background: #2b8cee;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .summary h2 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            color: white;
+        }
+
+        .summary ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .summary li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: white;
+        }
+
+        .summary li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        h3 {
+            color: #34495e;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .notice {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #2b8cee;
+        }
+
+        .contact-info a {
+            color: #2b8cee;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e8e8e8;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-link::after {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .overlay {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.5rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo-container">
+                    <img src="logo.png" alt="Crypto Trading App Logo" class="logo" onerror="this.style.display='none'">
+                    <span class="app-name">Crypto Trading App</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html" class="nav-link">Terms of Service</a></li>
+                    <li><a href="contact-us.html" class="nav-link">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div class="container">
+
+            <header>
+                <h1>Terms of Service for Crypto Trading App</h1>
+                <p class="last-updated">Last Updated: December 10, 2025</p>
+            </header>
+
+            <div class="summary">
+                <h2>Quick Summary</h2>
+                <ul>
+                    <li>License granted for personal use on Apple devices</li>
+                    <li>Subscription-based services with auto-renewal</li>
+                    <li>Limited data collection for service improvement</li>
+                    <li>No warranty - use at your own risk</li>
+                    <li>Governing law: England and Wales</li>
+                </ul>
+            </div>
+
+            <section>
+                <h2>1. Scope of License</h2>
+                <p>MQL Development Ltd ("Licensor") grants you a nontransferable, nonexclusive license to use Crypto Trading App (the "Licensed Application") on Apple-branded devices that you own or control, as permitted by Apple's Usage Rules in the App Store Terms of Service.</p>
+                <p>You may not distribute, transfer, sublicense, or make the Licensed Application available over a network where it could be used by multiple devices at the same time. You may not copy (except as permitted by this license and Apple's Usage Rules), reverse-engineer, disassemble, attempt to derive the source code of, modify, or create derivative works of the Licensed Application, any updates, or any part thereof, except as expressly permitted by applicable law.</p>
+            </section>
+
+            <section>
+                <h2>2. Subscriptions</h2>
+                <p>Crypto Trading App offers subscription-based services ("Subscriptions") that provide additional features and functionality for cryptocurrency trading, portfolio tracking, and market analysis.</p>
+                <ul>
+                    <li><strong>Billing Cycles:</strong> Subscriptions are available on monthly and yearly billing cycles.</li>
+                    <li><strong>Payment:</strong> Payment is charged to your Apple App Store account upon purchase confirmation.</li>
+                    <li><strong>Auto-Renewal:</strong> Subscriptions automatically renew unless you disable auto-renew at least 24 hours before the current billing period ends.</li>
+                    <li><strong>Cancellation:</strong> You can manage and cancel your subscription through your Apple App Store account settings.</li>
+                    <li><strong>Refunds:</strong> Refunds are handled directly by Apple in accordance with App Store policies. We do not issue refunds ourselves.</li>
+                    <li><strong>Free Tier:</strong> The Licensed Application offers limited functionality without a subscription. Premium features require an active subscription.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>3. Consent to Use of Data</h2>
+                <p>You agree that Licensor may collect and use limited, non-personally identifiable technical and usage data, processed locally on your device or in aggregated form, solely to facilitate software updates, improve app performance, and provide support.</p>
+                <p>We do not collect, store, or process user login credentials, exchange API keys, or transaction data on our servers. All such data remains under your control on your device, as described in our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+            </section>
+
+            <section>
+                <h2>4. Termination</h2>
+                <p>This License remains effective until terminated by you or MQL Development Ltd. Your rights will automatically terminate without notice if you fail to comply with any term(s) of this License. Upon termination, you must stop using the Licensed Application and delete all copies.</p>
+            </section>
+
+            <section>
+                <h2>5. External Services</h2>
+                <p>The Licensed Application may enable access to external services provided by third parties, including:</p>
+                <ul>
+                    <li><strong>Apple:</strong> For subscription management and payments (<a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a>).</li>
+                    <li><strong>Cryptocurrency Exchanges:</strong> Binance, Coinbase, and other exchanges for trading, portfolio tracking, and market data.</li>
+                    <li><strong>Market Data Providers:</strong> For real-time cryptocurrency prices and market information.</li>
+                    <li><strong>AI Service Providers (if enabled):</strong> For optional AI-powered chat or market analysis features.</li>
+                </ul>
+                <p>You agree to use these External Services at your own risk. Licensor is not responsible for examining or evaluating the content, accuracy, or availability of any third-party External Services.</p>
+            </section>
+
+            <section>
+                <h2>6. Exchange API Connections</h2>
+                <p>When you connect your exchange accounts (Binance, Coinbase, etc.), you are responsible for:</p>
+                <ul>
+                    <li>Maintaining the security and confidentiality of your API keys</li>
+                    <li>Using API keys with appropriate permissions (read-only for portfolio tracking, or trading permissions only if you enable trading features)</li>
+                    <li>Understanding the risks associated with automated trading and trading bots</li>
+                    <li>Complying with your exchange's terms of service</li>
+                </ul>
+                <div class="notice">
+                    <p><strong>Important:</strong> We are not responsible for any losses incurred through trading activities, whether manual or automated. Trading cryptocurrencies involves substantial risk of loss. You should never trade with funds you cannot afford to lose.</p>
+                </div>
+                <p>The Licensed Application does not have custody of your funds and cannot initiate withdrawals from your exchange accounts.</p>
+            </section>
+
+            <section>
+                <h2>7. No Warranty</h2>
+                <p>You expressly acknowledge and agree that use of the Licensed Application is at your sole risk. To the maximum extent permitted by law, the Licensed Application and any services provided through it are offered "as is" and "as available," with all faults and without warranty of any kind, either express or implied.</p>
+                <p>Licensor disclaims all warranties and conditions with respect to the Licensed Application and services, including implied warranties of merchantability, fitness for a particular purpose, accuracy, quiet enjoyment, and non-infringement of third-party rights.</p>
+                <p>The Licensed Application does not provide financial, investment, tax, or legal advice.</p>
+                <p>Market data, prices, and trading information are provided for informational purposes only and should not be relied upon as the sole basis for trading decisions.</p>
+            </section>
+
+            <section>
+                <h2>8. Limitation of Liability</h2>
+                <p>To the extent not prohibited by law, MQL Development Ltd shall not be liable for personal injury or any incidental, special, indirect, or consequential damages, including loss of profits, loss of data, trading losses, or business interruption, arising out of or related to your use or inability to use the Licensed Application.</p>
+                <p>In no event, to the maximum extent permitted by applicable law, shall Licensor's total liability exceed fifty U.S. dollars ($50.00).</p>
+                <div class="notice">
+                    <p><strong>Trading Disclaimer:</strong> Cryptocurrency trading involves substantial risk of loss and is not suitable for all investors. Past performance is not indicative of future results. You should carefully consider whether trading is suitable for you in light of your circumstances, knowledge, and financial resources.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>9. Export Compliance</h2>
+                <p>You may not use or otherwise export or re-export the Licensed Application except as authorized by the laws of the United Kingdom, United States, and the jurisdiction where the Licensed Application was obtained. By using the Licensed Application, you represent and warrant that you are not located in a country subject to embargo or on a government restricted list.</p>
+            </section>
+
+            <section>
+                <h2>10. Commercial Items</h2>
+                <p>If you are a U.S. Government end user, the Licensed Application is provided as a "Commercial Item" with only those rights as are granted to other end users under this License.</p>
+            </section>
+
+            <section>
+                <h2>11. Governing Law and Jurisdiction</h2>
+                <p>This Agreement is governed by and construed under the laws of England and Wales, without regard to conflict of law principles.</p>
+                <p>If you are a resident of the European Union, Switzerland, Norway, or Iceland, mandatory consumer protection laws of your country of residence will also apply.</p>
+            </section>
+
+            <section>
+                <h2>12. Privacy Policy Reference</h2>
+                <p>Your use of the Licensed Application is also governed by our <a href="privacy-policy.html">Privacy Policy</a>, which explains how we collect, use, and protect your information.</p>
+            </section>
+
+            <section>
+                <h2>13. Updates</h2>
+                <p>From time to time, the Licensed Application may be updated to improve features, fix bugs, or enhance performance. By using the Licensed Application, you consent to receiving such updates automatically or manually via the App Store.</p>
+            </section>
+
+            <section>
+                <h2>14. Changes to Terms</h2>
+                <p>We reserve the right to update or modify these Terms of Service at any time. Any changes will be posted within the Licensed Application or on our website. Continued use of the Licensed Application after changes take effect constitutes your agreement to the revised terms.</p>
+            </section>
+
+            <section>
+                <h2>15. Content and Intellectual Property</h2>
+                <p>You retain ownership of your portfolio data, trading history, and other content you create using the Licensed Application. However, you are responsible for ensuring that your use of the Licensed Application complies with applicable laws and does not infringe on the rights of others.</p>
+                <p>Market data, prices, and other information provided by the Licensed Application are the property of their respective providers and are subject to their terms of service.</p>
+            </section>
+
+            <section>
+                <h2>16. Trading Risks</h2>
+                <p>By using this application for trading purposes, you acknowledge that:</p>
+                <ul>
+                    <li>Cryptocurrency trading involves substantial risk of loss</li>
+                    <li>Past performance does not guarantee future results</li>
+                    <li>You should never trade with funds you cannot afford to lose</li>
+                    <li>Automated trading and trading bots carry additional risks</li>
+                    <li>You are solely responsible for your trading decisions</li>
+                </ul>
+                <p>We are not a financial advisor and do not provide investment advice. All trading decisions are your own responsibility.</p>
+                <p>If enabled, AI-powered insights are provided for informational purposes only and do not constitute financial advice.</p>
+            </section>
+
+            <section>
+                <h2>17. Contact Us</h2>
+                <div class="contact-info">
+                    <p><strong>MQL Development Ltd</strong></p>
+                    <p>Email: <a href="mailto:info@mqldevelopment.com">info@mqldevelopment.com</a></p>
+                    <p>Website: <a href="https://mqldevelopment.com" target="_blank">https://mqldevelopment.com</a></p>
+                </div>
+            </section>
+
+            <footer>
+                <p>Effective as of December 10, 2025.</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
+

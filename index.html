@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Trading App - Professional Crypto Trading Platform for macOS</title>
+    <meta name="description" content="Advanced cryptocurrency trading platform for macOS. Track portfolios, analyze charts, connect to Binance, and trade with AI-powered insights.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        img {
+            border: none !important;
+            outline: none !important;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f6f7f8 0%, #e8e8e8 50%, #d3d3d3 100%);
+            min-height: 100vh;
+        }
+
+        .overlay {
+            background: rgba(255, 255, 255, 0);
+            backdrop-filter: blur(10px);
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            margin-bottom: 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo {
+            height: 40px;
+            width: 40px;
+            border-radius: 8px;
+            border: none !important;
+            outline: none !important;
+            background: transparent;
+            display: block;
+            padding: 0;
+            object-fit: contain;
+        }
+
+        .app-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2b8cee;
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #2b8cee;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2b8cee;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            border-radius: 0;
+            box-shadow: none;
+            border: none !important;
+            outline: none !important;
+            background: transparent !important;
+            display: block;
+            padding: 0 !important;
+            margin-left: auto;
+            margin-right: auto;
+            object-fit: contain;
+            -webkit-appearance: none;
+            appearance: none;
+            vertical-align: middle;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #2b8cee;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(43, 140, 238, 0.4);
+            background: #1a7cd9;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #2b8cee;
+            transition: transform 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #555;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2b8cee;
+            font-weight: bold;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            background: #2b8cee;
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+
+        .why-choose h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .benefit {
+            text-align: center;
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* How It Works */
+        .how-it-works {
+            margin: 3rem 0;
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: #2b8cee;
+            color: white;
+            border-radius: 50%;
+            line-height: 60px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            color: #7f8c8d;
+        }
+
+        /* Technical Specs */
+        .tech-specs {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+
+        .tech-specs h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .specs-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+        }
+
+        .specs-list li {
+            padding: 0.5rem;
+            color: #555;
+        }
+
+        .specs-list li strong {
+            color: #2c3e50;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e8e8e8;
+            color: #7f8c8d;
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        footer .footer-links a {
+            color: #2b8cee;
+            text-decoration: none;
+        }
+
+        footer .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-link::after {
+                display: none;
+            }
+            
+            .hero-logo {
+                width: 80px;
+                height: 80px;
+                box-shadow: none !important;
+                border: none !important;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo-container">
+                    <img src="logo.png" alt="Crypto Trading App Logo" class="logo" onerror="this.style.display='none'">
+                    <span class="app-name">Crypto Trading App</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html" class="nav-link">Terms of Service</a></li>
+                    <li><a href="contact-us.html" class="nav-link">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div class="container">
+
+            <!-- Hero Section -->
+            <div class="hero">
+                <img src="logo.png" alt="Crypto Trading App Logo" class="hero-logo" onerror="this.style.display='none'">
+                <h1>Professional Crypto Trading Platform</h1>
+                <p class="subtitle">Track portfolios, analyze markets, connect to exchanges, and trade with confidence. All in one powerful macOS app.</p>
+                <a href="https://apps.apple.com" class="cta-button">Download for macOS</a>
+            </div>
+
+            <!-- Key Features -->
+            <section class="features-section">
+                <h2 style="text-align: center; color: #2c3e50; margin-bottom: 2rem; font-size: 2rem;">Key Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Advanced Charts</h3>
+                        <p>Professional trading charts with real-time price data. Track multiple cryptocurrencies simultaneously with customizable chart views.</p>
+                        <ul class="feature-list">
+                            <li>Real-time price updates</li>
+                            <li>Multiple chart types</li>
+                            <li>Technical indicators</li>
+                            <li>Customizable layouts</li>
+                            <li>Symbol watchlists</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">💼</div>
+                        <h3>Portfolio Tracking</h3>
+                        <p>Comprehensive portfolio management with support for multiple wallets and exchanges. Track your holdings, transactions, and performance.</p>
+                        <ul class="feature-list">
+                            <li>Multi-wallet support</li>
+                            <li>Transaction history</li>
+                            <li>Performance analytics</li>
+                            <li>Binance & Coinbase integration</li>
+                            <li>Real-time portfolio value</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>AI-Powered Insights</h3>
+                        <p>Get intelligent trading insights and market analysis powered by AI. Chat with AI to get answers about crypto markets and trading strategies.</p>
+                        <ul class="feature-list">
+                            <li>AI chat assistant</li>
+                            <li>Market analysis</li>
+                            <li>Trading recommendations</li>
+                            <li>Risk assessment</li>
+                            <li>Educational content</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🔥</div>
+                        <h3>Crypto Heatmap</h3>
+                        <p>Visualize market movements with an interactive heatmap. Quickly identify which cryptocurrencies are gaining or losing value.</p>
+                        <ul class="feature-list">
+                            <li>Real-time market visualization</li>
+                            <li>Color-coded price changes</li>
+                            <li>Market overview</li>
+                            <li>Quick market insights</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Crypto Screener</h3>
+                        <p>Screen and filter cryptocurrencies based on your criteria. Find trading opportunities that match your strategy.</p>
+                        <ul class="feature-list">
+                            <li>Advanced filtering</li>
+                            <li>Custom search criteria</li>
+                            <li>Price alerts</li>
+                            <li>Market cap analysis</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Exchange Integration</h3>
+                        <p>Connect to Binance and Coinbase for seamless trading. Manage your exchange accounts directly from the app.</p>
+                        <ul class="feature-list">
+                            <li>Binance integration</li>
+                            <li>Coinbase connection</li>
+                            <li>Secure API management</li>
+                            <li>Trading bot support</li>
+                            <li>Order management</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Choose Us -->
+            <div class="why-choose">
+                <h2>Why Choose Crypto Trading App?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit">
+                        <div class="benefit-icon">✅</div>
+                        <h3>All-in-One Platform</h3>
+                        <p>Everything you need for crypto trading in one powerful macOS application</p>
+                    </div>
+                    <div class="benefit">
+                        <div class="benefit-icon">⚡</div>
+                        <h3>Real-Time Data</h3>
+                        <p>Live market data and instant price updates from major exchanges</p>
+                    </div>
+                    <div class="benefit">
+                        <div class="benefit-icon">🔒</div>
+                        <h3>Secure & Private</h3>
+                        <p>Your API keys and data are encrypted and stored securely</p>
+                    </div>
+                    <div class="benefit">
+                        <div class="benefit-icon">📱</div>
+                        <h3>Native macOS</h3>
+                        <p>Optimized for macOS with beautiful native interface and widgets</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How It Works -->
+            <div class="how-it-works">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Download & Install</h3>
+                        <p>Get the app from the Mac App Store</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Connect Exchanges</h3>
+                        <p>Link your Binance or Coinbase accounts</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Track & Analyze</h3>
+                        <p>Monitor your portfolio and analyze markets</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Trade Smart</h3>
+                        <p>Make informed decisions with AI insights</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final CTA -->
+            <div style="text-align: center; margin: 3rem 0;">
+                <h2 style="color: #2c3e50; margin-bottom: 1rem;">Ready to Start Trading?</h2>
+                <p style="color: #7f8c8d; margin-bottom: 2rem; font-size: 1.1rem;">Download Crypto Trading App today and take control of your cryptocurrency investments with professional-grade tools.</p>
+                <a href="https://apps.apple.com" class="cta-button">Download Now</a>
+            </div>
+
+            <footer>
+                <div class="footer-links">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                    <a href="contact-us.html">Contact Us</a>
+                </div>
+                <p>© 2025 MQL Development Ltd. All rights reserved.</p>
+                <p>Email: <a href="mailto:info@mqldevelopment.com" style="color: #2b8cee;">info@mqldevelopment.com</a></p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
+

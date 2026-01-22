@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Crypto Trading App</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f6f7f8 0%, #e8e8e8 50%, #d3d3d3 100%);
+            min-height: 100vh;
+        }
+
+        .overlay {
+            background: rgba(255, 255, 255, 0);
+            backdrop-filter: blur(10px);
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            margin-bottom: 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo {
+            height: 40px;
+            width: 40px;
+            border-radius: 8px;
+        }
+
+        .app-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2b8cee;
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #2b8cee;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2b8cee;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e8e8e8;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .summary {
+            background: #2b8cee;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .summary h2 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            color: white;
+        }
+
+        .summary ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .summary li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: white;
+        }
+
+        .summary li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        h3 {
+            color: #34495e;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .notice {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #2b8cee;
+        }
+
+        .contact-info a {
+            color: #2b8cee;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e8e8e8;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-link::after {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .overlay {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.5rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo-container">
+                    <img src="logo.png" alt="Crypto Trading App Logo" class="logo" onerror="this.style.display='none'">
+                    <span class="app-name">Crypto Trading App</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html" class="nav-link">Terms of Service</a></li>
+                    <li><a href="contact-us.html" class="nav-link">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div class="container">
+
+            <header>
+                <h1>Privacy Policy for Crypto Trading App</h1>
+                <p class="last-updated">Last Updated: December 10, 2025</p>
+            </header>
+
+            <div class="summary">
+                <h2>Quick Summary</h2>
+                <ul>
+                    <li>We do not create or store user accounts</li>
+                    <li>We do not store API keys, login credentials, or transaction data on our servers</li>
+                    <li>All portfolio, wallet, and exchange data is stored locally on your device</li>
+                    <li>We do not sell or share personal data</li>
+                    <li>You are always in control of your data</li>
+                </ul>
+            </div>
+
+            <section>
+                <h2>1. Introduction</h2>
+                <p>Buy, Analyze & Track Crypto ("we", "our", or "us") is a macOS application designed for cryptocurrency market analysis, portfolio tracking, and trading-related tools.</p>
+                <p>We respect your privacy and are committed to protecting it. This Privacy Policy explains how data is handled when you use our application.</p>
+                <p><strong>Important:</strong> We do not require user accounts and do not collect or store personal login information.</p>
+            </section>
+
+            <section>
+                <h2>2. Data Handling Overview (Important)</h2>
+                <p>The app is designed with a local-first architecture:</p>
+                <ul>
+                    <li>No user login or registration is required</li>
+                    <li>No personal identity data is collected</li>
+                    <li>No portfolio or transaction data is stored on our servers</li>
+                    <li>No API keys are transmitted to us</li>
+                    <li>All sensitive data remains on your device.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>3. Information Stored Locally on Your Device</h2>
+                <p>The following data is stored only on your device:</p>
+                <ul>
+                    <li>Portfolio holdings and transaction entries</li>
+                    <li>Wallet addresses added by you</li>
+                    <li>Saved symbols and watchlists</li>
+                    <li>Widget configurations and app preferences</li>
+                    <li>Exchange API keys (encrypted using macOS Keychain)</li>
+                </ul>
+                <p><strong>We do not have access to this data.</strong></p>
+            </section>
+
+            <section>
+                <h2>4. Exchange API Usage</h2>
+                <p>When you connect an exchange:</p>
+                <ul>
+                    <li>API keys are encrypted and stored locally using macOS Keychain</li>
+                    <li>API requests are made directly from your device to the exchange</li>
+                    <li>We do not proxy, log, or store API requests or responses</li>
+                    <li>We never receive or store API keys on our servers</li>
+                    <li>Supported exchanges communicate only with your device.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>5. Market Data & Third-Party Services</h2>
+                <p>To display prices and market information:</p>
+                <ul>
+                    <li>The app may request market data from third-party data providers</li>
+                    <li>Requests are made directly from your device</li>
+                    <li>We do not store market queries, portfolio data, or usage data on our servers</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>6. Data We Do NOT Collect</h2>
+                <p>We explicitly do not collect or store:</p>
+                <ul>
+                    <li>User login credentials</li>
+                    <li>Exchange usernames or passwords</li>
+                    <li>API keys on servers</li>
+                    <li>Transaction history on servers</li>
+                    <li>Wallet private keys</li>
+                    <li>Personal identity information</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>7. Subscriptions & Payments</h2>
+                <p>All purchases and subscriptions are processed by Apple App Store.</p>
+                <ul>
+                    <li>We do not process payments</li>
+                    <li>We do not store billing information</li>
+                    <li>Subscription status is managed by Apple</li>
+                </ul>
+                <p>Please refer to <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple's Privacy Policy</a> for payment-related data handling.</p>
+            </section>
+
+            <section>
+                <h2>8. Data Security</h2>
+                <p>We rely on macOS security features to protect local data:</p>
+                <ul>
+                    <li>macOS Keychain for API key encryption</li>
+                    <li>Secure HTTPS connections for all external requests</li>
+                    <li>No background data transmission without user action</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>9. Your Control & Rights</h2>
+                <p>You can at any time:</p>
+                <ul>
+                    <li>Delete portfolio and transaction data</li>
+                    <li>Remove API keys</li>
+                    <li>Disconnect exchanges</li>
+                    <li>Delete wallet addresses</li>
+                    <li>Stop using the app</li>
+                </ul>
+                <p><strong>Deleting the app removes all locally stored data.</strong></p>
+            </section>
+
+            <section>
+                <h2>10. Children's Privacy</h2>
+                <p>This app is not intended for users under the age of 13. We do not knowingly collect data from children.</p>
+            </section>
+
+            <section>
+                <h2>11. Changes to This Policy</h2>
+                <p>We may update this Privacy Policy periodically. Changes will be reflected with an updated date.</p>
+            </section>
+
+            <section>
+                <h2>12. Contact Information</h2>
+                <div class="contact-info">
+                    <p><strong>MQL Development Ltd</strong></p>
+                    <p>Email: <a href="mailto:info@mqldevelopment.com">info@mqldevelopment.com</a></p>
+                    <p>Website: <a href="https://mqldevelopment.com" target="_blank">https://mqldevelopment.com</a></p>
+                </div>
+            </section>
+
+            <footer>
+                <p>Effective Date: December 10, 2025.</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
+
